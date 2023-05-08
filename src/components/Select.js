@@ -3,6 +3,8 @@ import appleIcon from './icons/apple.png';
 import orangeIcon from './icons/orange.png';
 import grapeIcon from './icons/grape.png';
 import './Select.css';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 const options = [
   { id: 1, label: 'Opción 1', icon: appleIcon },
@@ -18,20 +20,32 @@ function Select() {
     alert(`Seleccionaste la opción ${event.target.value}`);
   };
 
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props} className='tooltip'>
+      {props.label}
+    </Tooltip>
+  );
+
   return (
     <div>
       {options.map((option) => (
         <>
           {/* Render a radio group, when the user selects an option, set the state */}
-          <label>
-            <input
-              type="radio"
-              name="option"
-              value={option.id}
-              onChange={handleChange}
-            />
-            <img src={option.icon} alt={option.label} />
-          </label>
+          <OverlayTrigger
+            placement="bottom"
+            delay={{ show: 250, hide: 100 }}
+            overlay={renderTooltip(option)}
+          >
+            <label>
+              <input
+                type="radio"
+                name="option"
+                value={option.id}
+                onChange={handleChange}
+              />
+              <img src={option.icon} alt={option.label} />
+            </label>
+          </OverlayTrigger>
         </>
       ))}
     </div>

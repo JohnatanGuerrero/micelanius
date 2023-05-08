@@ -7,3 +7,14 @@ label input[type="radio"] {
 label input[type="radio"]:checked + img {
   background-color: blue;
 }
+
+/* Toltip */
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  background-color: rgba(0, 0,0, 0.8);
+  border-radius: 5px;
+  color: white;
+  padding: 2px 5px;
+}

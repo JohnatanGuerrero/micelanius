@@ -1,0 +1,9 @@
+/* Avoid show radio icon in group */
+
+label input[type="radio"] {
+  display: none;
+}
+
+label input[type="radio"]:checked + img {
+  background-color: blue;
+}
